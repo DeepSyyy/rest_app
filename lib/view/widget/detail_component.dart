@@ -4,16 +4,11 @@ import 'package:rest_app/models/sub_models/restaurant_model.dart';
 import 'package:rest_app/view/widget/drink_list.dart';
 import 'package:rest_app/view/widget/food_list.dart';
 
-class DetailPageComponent extends StatefulWidget {
+class DetailPageComponent extends StatelessWidget {
   const DetailPageComponent({super.key, required this.restaurant});
 
   final Restaurant restaurant;
 
-  @override
-  State<DetailPageComponent> createState() => _DetailPageComponentState();
-}
-
-class _DetailPageComponentState extends State<DetailPageComponent> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +16,7 @@ class _DetailPageComponentState extends State<DetailPageComponent> {
         title: Row(
           children: [
             Text(
-              widget.restaurant.name,
+              restaurant.name,
               style: GoogleFonts.poppins(
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
@@ -35,7 +30,7 @@ class _DetailPageComponentState extends State<DetailPageComponent> {
         clipBehavior: Clip.none,
         children: [
           Hero(
-            tag: widget.restaurant.id,
+            tag: restaurant.id,
             child: Container(
               height: 200,
               width: double.infinity,
@@ -43,7 +38,7 @@ class _DetailPageComponentState extends State<DetailPageComponent> {
                 borderRadius: BorderRadius.circular(10),
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: NetworkImage(widget.restaurant.pictureId),
+                  image: NetworkImage(restaurant.pictureId),
                 ),
               ),
             ),
@@ -52,7 +47,7 @@ class _DetailPageComponentState extends State<DetailPageComponent> {
             height: 16,
           ),
           Text(
-            widget.restaurant.name,
+            restaurant.name,
             style: GoogleFonts.poppins(
               fontWeight: FontWeight.bold,
               fontSize: 20,
@@ -72,7 +67,7 @@ class _DetailPageComponentState extends State<DetailPageComponent> {
                 width: 8,
               ),
               Text(
-                widget.restaurant.city,
+                restaurant.city,
                 style: GoogleFonts.montserrat(
                   fontWeight: FontWeight.w500,
                 ),
@@ -92,7 +87,7 @@ class _DetailPageComponentState extends State<DetailPageComponent> {
                 width: 8,
               ),
               Text(
-                widget.restaurant.rating.toString(),
+                restaurant.rating.toString(),
                 style: GoogleFonts.montserrat(
                   fontWeight: FontWeight.w500,
                 ),
@@ -116,14 +111,12 @@ class _DetailPageComponentState extends State<DetailPageComponent> {
           const SizedBox(
             height: 12,
           ),
-          Flexible(
-            child: Text(
-              widget.restaurant.description,
-              overflow: TextOverflow.clip,
-              textAlign: TextAlign.justify,
-              style: GoogleFonts.montserrat(
-                fontWeight: FontWeight.w300,
-              ),
+          Text(
+            restaurant.description,
+            overflow: TextOverflow.clip,
+            textAlign: TextAlign.justify,
+            style: GoogleFonts.montserrat(
+              fontWeight: FontWeight.w300,
             ),
           ),
           const SizedBox(
@@ -151,9 +144,8 @@ class _DetailPageComponentState extends State<DetailPageComponent> {
             child: ListView.builder(
               clipBehavior: Clip.none,
               scrollDirection: Axis.horizontal,
-              itemCount: widget.restaurant.menus.foods.length,
+              itemCount: restaurant.menus.foods.length,
               itemBuilder: (context, index) {
-                final Restaurant restaurant = widget.restaurant;
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: FoodListContainer(
@@ -187,9 +179,8 @@ class _DetailPageComponentState extends State<DetailPageComponent> {
             child: ListView.builder(
               clipBehavior: Clip.none,
               scrollDirection: Axis.horizontal,
-              itemCount: widget.restaurant.menus.drinks.length,
+              itemCount: restaurant.menus.drinks.length,
               itemBuilder: (context, index) {
-                final Restaurant restaurant = widget.restaurant;
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: DrinkListContainer(

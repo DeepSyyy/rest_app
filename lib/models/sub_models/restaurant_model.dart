@@ -9,7 +9,7 @@ class Restaurant {
   final String pictureId;
   final String city;
   final double rating;
-  final Menus menus;
+  final Menu menus;
 
   Restaurant({
     required this.id,
@@ -33,7 +33,7 @@ class Restaurant {
         pictureId: json["pictureId"],
         city: json["city"],
         rating: json["rating"]?.toDouble(),
-        menus: Menus.fromMap(json["menus"]),
+        menus: Menu.fromMap(json["menus"]),
       );
 
   Map<String, dynamic> toMap() => {
