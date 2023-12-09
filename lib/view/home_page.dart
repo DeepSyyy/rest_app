@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rest_app/models/main_models/restaurant_list.dart';
 import 'package:rest_app/view/widget/restaurant_card.dart';
+import 'package:rest_app/view/widget/search_bar.dart';
 
 enum LoadingState {
   loading,
@@ -43,7 +44,12 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return NestedScrollView(
+      headerSliverBuilder: (context, isScroll) {
+        return [
+          const SearchBarAppBarr(),
+        ];
+      },
       body: loadingState == LoadingState.loading
           ? const Center(
               child: CircularProgressIndicator(),
@@ -58,6 +64,7 @@ class _HomePageState extends State<HomePage> {
                       restaurantPlace: restaurant.city,
                       restaurantImage: restaurant.pictureId,
                       restaurantRating: restaurant.rating.toString(),
+                      restaurantDesc: restaurant.description,
                     );
                   },
                 )

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rest_app/view/detail_page.dart';
 import 'package:rest_app/view/home_page.dart';
+import 'package:rest_app/view/widget/search_bar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,17 +35,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Rest App",
-          style: GoogleFonts.poppins(
-            fontWeight: FontWeight.bold,
-            fontSize: 24,
-          ),
-        ),
-      ),
       body:
-          HomePage(), // This trailing comma makes auto-formatting nicer for build methods.
+          DetailPage(), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

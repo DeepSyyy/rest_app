@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class RestaurantsCard extends StatelessWidget {
   const RestaurantsCard({
@@ -7,11 +8,13 @@ class RestaurantsCard extends StatelessWidget {
     required this.restaurantPlace,
     required this.restaurantImage,
     required this.restaurantRating,
+    required this.restaurantDesc,
   });
   final String restaurantName;
   final String restaurantPlace;
   final String restaurantImage;
   final String restaurantRating;
+  final String restaurantDesc;
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +62,7 @@ class RestaurantsCard extends StatelessWidget {
                     const Icon(
                       Icons.location_on,
                       size: 12,
+                      color: Colors.red,
                     ),
                     Flexible(
                       child: Text(
@@ -79,6 +83,7 @@ class RestaurantsCard extends StatelessWidget {
                     const Icon(
                       Icons.star,
                       size: 12,
+                      color: Colors.yellow,
                     ),
                     Flexible(
                       child: Text(
@@ -90,6 +95,16 @@ class RestaurantsCard extends StatelessWidget {
                       ),
                     ),
                   ],
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                Text(
+                  restaurantDesc,
+                  overflow: TextOverflow.ellipsis,
+                  style: GoogleFonts.montserrat(
+                    fontSize: 16,
+                  ),
                 ),
               ],
             ),
