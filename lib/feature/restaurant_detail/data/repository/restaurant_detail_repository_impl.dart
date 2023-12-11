@@ -17,6 +17,7 @@ class RestaurantDetailRepositoryImpl extends RestaurantDetailRepository {
       {required RestaurantDetailParams params}) async {
     try {
       final result = await remoteDataSource.getRestaurantDetail(params: params);
+      print(result);
       return Right(result);
     } on ServerException {
       return Left(ServerFailure(errorMessage: 'Server Error'));

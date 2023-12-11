@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class DrinkListContainer extends StatelessWidget {
-  const DrinkListContainer({super.key, required this.title});
+class FoodCard extends StatelessWidget {
+  const FoodCard({super.key, required this.title});
 
   final String title;
 
@@ -23,7 +23,7 @@ class DrinkListContainer extends StatelessWidget {
       child: Column(
         children: [
           SvgPicture.asset(
-            'assets/svg/cherry drink-amico.svg',
+            'assets/svg/Hamburger-amico.svg',
             width: 100,
             height: 100,
           ),

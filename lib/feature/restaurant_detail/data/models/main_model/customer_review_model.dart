@@ -18,8 +18,8 @@ class CustomerReviewListModel extends CustomerReviewListEntity {
           customerReviews: customerReviews,
         );
 
-  factory CustomerReviewListModel.fromJson(String str) =>
-      CustomerReviewListModel.fromMap(json.decode(str));
+  factory CustomerReviewListModel.fromJson(Map<String, dynamic> json) =>
+      CustomerReviewListModel.fromMap(json);
 
   String toJson() => json.encode(toMap());
 

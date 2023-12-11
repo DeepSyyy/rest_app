@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:rest_app/feature/restaurant_detail/presentation/widget/detail_component.dart';
 
-class MyWidget extends StatelessWidget {
-  const MyWidget({super.key});
+class DetailRestaurantView extends StatelessWidget {
+  const DetailRestaurantView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text('Soon implemented'));
+    return DetailComponent();
   }
 }

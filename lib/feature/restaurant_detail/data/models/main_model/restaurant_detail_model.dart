@@ -18,8 +18,8 @@ class RestaurantDetailModel extends RestaurantDetailEntity {
           restaurant: restaurant,
         );
 
-  factory RestaurantDetailModel.fromJson(String str) =>
-      RestaurantDetailModel.fromMap(json.decode(str));
+  factory RestaurantDetailModel.fromJson(Map<String, dynamic> json) =>
+      RestaurantDetailModel.fromMap(json);
 
   String toJson() => json.encode(toMap());
 
