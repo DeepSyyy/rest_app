@@ -14,7 +14,6 @@ class RestaurantListRemoteDataSourceImpl
   @override
   Future<RestaurantListModel> getRestaurantList() async {
     final response = await dio.get('https://restaurant-api.dicoding.dev/list');
-    print(response);
     if (response.statusCode == 200) {
       return RestaurantListModel.fromJson(response.data);
     } else {

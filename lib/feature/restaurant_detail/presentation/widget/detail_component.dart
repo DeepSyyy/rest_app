@@ -15,7 +15,9 @@ import 'package:rest_app/feature/restaurant_detail/presentation/widget/review_po
 import 'package:rest_app/feature/restaurant_detail/presentation/widget/review_tile.dart';
 
 class DetailComponent extends StatefulWidget {
-  DetailComponent({super.key});
+  const DetailComponent({super.key, required this.restaurantId});
+
+  final String restaurantId;
 
   @override
   State<DetailComponent> createState() => _DetailComponentState();
@@ -23,6 +25,12 @@ class DetailComponent extends StatefulWidget {
 
 class _DetailComponentState extends State<DetailComponent> {
   TextEditingController textEditingController = TextEditingController();
+  void initState() {
+    Provider.of<RestaurantDetailProvider>(context, listen: false)
+        .eitherFailureOrRestaurantDetail(value: widget.restaurantId);
+    super.initState();
+  }
+
   void _submitReview(BuildContext context) async {
     final reviewText = textEditingController.text;
 
@@ -33,7 +41,7 @@ class _DetailComponentState extends State<DetailComponent> {
         ),
       ).postReview(
         params: PostReviewParams(
-          id: "rqdv5juczeskfw1e867",
+          id: widget.restaurantId,
           name: "John Doe",
           review: reviewText,
         ),
@@ -56,7 +64,7 @@ class _DetailComponentState extends State<DetailComponent> {
         textEditingController.clear();
         setState(() {
           Provider.of<RestaurantDetailProvider>(context, listen: false)
-              .eitherFailureOrRestaurantDetail(value: "rqdv5juczeskfw1e867");
+              .eitherFailureOrRestaurantDetail(value: widget.restaurantId);
         });
       });
     } else {
