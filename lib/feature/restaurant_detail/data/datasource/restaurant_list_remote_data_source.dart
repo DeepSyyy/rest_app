@@ -22,7 +22,6 @@ class RestaurantDetailRemoteDataSourceImpl
       {required RestaurantDetailParams params}) async {
     final response = await dio
         .get('https://restaurant-api.dicoding.dev/detail/${params.id}');
-    print(response);
     if (response.statusCode == 200) {
       return RestaurantDetailModel.fromJson(response.data);
     } else {
